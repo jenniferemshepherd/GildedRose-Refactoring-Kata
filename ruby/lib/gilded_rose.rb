@@ -9,13 +9,11 @@ class GildedRose
     @items.each do |item|
       if item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert"
         if item.quality > 0
-          if item.name != "Sulfuras, Hand of Ragnaros"
-            item.quality -= 1
-          end
+            decrease_quality_by_1(item) if item.name != "Sulfuras, Hand of Ragnaros"
         end
       else
         if item.quality < 50
-          item.quality += 1
+          increment_quality_by_1(item)
           backstage_pass_quality_increases(item)
         end
       end
@@ -26,7 +24,7 @@ class GildedRose
         if item.name != "Aged Brie"
             if item.quality > 0
               if item.name != "Sulfuras, Hand of Ragnaros"
-                item.quality -= 1
+                decrease_quality_by_1(item)
               end
             end
           item.quality = 0 if item.name == "Backstage passes to a TAFKAL80ETC concert"
@@ -38,8 +36,16 @@ class GildedRose
   end
 end
 
+def increment_quality_by_1(item)
+  item.quality += 1
+end
+
+def decrease_quality_by_1(item)
+  item.quality -= 1
+end
+
 def increase_quality_by_1_not_beyond_limit(item)
-  item.quality += 1 if item.quality < 50
+  increment_quality_by_1(item) if item.quality < 50
 end
 
 def backstage_pass_quality_increases(item)
