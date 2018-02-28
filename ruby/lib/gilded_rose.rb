@@ -23,9 +23,7 @@ class GildedRose
       if item.sell_in < 0
         if item.name != "Aged Brie"
             if item.quality > 0
-              if item.name != "Sulfuras, Hand of Ragnaros"
-                decrease_quality_by_1(item)
-              end
+                decrease_quality_by_1(item) if item.name != "Sulfuras, Hand of Ragnaros"
             end
           item.quality = 0 if item.name == "Backstage passes to a TAFKAL80ETC concert"
         else
