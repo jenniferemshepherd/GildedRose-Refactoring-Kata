@@ -18,14 +18,10 @@ class GildedRose
           item.quality = item.quality + 1
           if item.name == "Backstage passes to a TAFKAL80ETC concert"
             if item.sell_in < 11
-              if item.quality < 50
-                item.quality = item.quality + 1
-              end
+              increase_quality_not_beyond_limit
             end
             if item.sell_in < 6
-              if item.quality < 50
-                item.quality = item.quality + 1
-              end
+              increase_quality_not_beyond_limit
             end
           end
         end
@@ -45,11 +41,13 @@ class GildedRose
             item.quality = item.quality - item.quality
           end
         else
-          if item.quality < 50
-            item.quality = item.quality + 1
-          end
+          increase_quality_not_beyond_limit
         end
       end
     end
   end
+end
+
+def increase_quality_not_beyond_limit
+  item.quality += 1 if item.quality < 50
 end
