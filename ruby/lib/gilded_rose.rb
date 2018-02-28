@@ -14,7 +14,7 @@ class GildedRose
       else
         if item.quality < 50
           increment_quality_by_1(item)
-          backstage_pass_quality_increases(item)
+          increase_backstage_pass_quality(item)
         end
       end
       item.sell_in -= 1 if item.name != "Sulfuras, Hand of Ragnaros"
@@ -44,7 +44,7 @@ def increase_quality_by_1_not_beyond_limit(item)
   increment_quality_by_1(item) if item.quality < 50
 end
 
-def backstage_pass_quality_increases(item)
+def increase_backstage_pass_quality(item)
   if item.name == "Backstage passes to a TAFKAL80ETC concert"
       increase_quality_by_1_not_beyond_limit(item) if item.sell_in < 11
       increase_quality_by_1_not_beyond_limit(item) if item.sell_in < 6
