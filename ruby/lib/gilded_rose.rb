@@ -47,11 +47,7 @@ end
 
 def backstage_pass_quality_increases(item)
   if item.name == "Backstage passes to a TAFKAL80ETC concert"
-    if item.sell_in < 11
-      increase_quality_by_1_not_beyond_limit(item)
-    end
-    if item.sell_in < 6
-      increase_quality_by_1_not_beyond_limit(item)
-    end
+      increase_quality_by_1_not_beyond_limit(item) if item.sell_in < 11
+      increase_quality_by_1_not_beyond_limit(item) if item.sell_in < 6
   end
 end
