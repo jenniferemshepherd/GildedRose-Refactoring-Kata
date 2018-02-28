@@ -17,7 +17,7 @@ class GildedRose
           backstage_pass_quality_increases(item)
         end
       end
-      item.sell_in -= 1 item.name != "Sulfuras, Hand of Ragnaros"
+      item.sell_in -= 1 if item.name != "Sulfuras, Hand of Ragnaros"
       if item.sell_in < 0
         if item.name != "Aged Brie"
             if item.quality > 0
