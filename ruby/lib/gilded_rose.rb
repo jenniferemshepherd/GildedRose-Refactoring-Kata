@@ -8,11 +8,11 @@ class GildedRose
   def update_quality()
     @items.each do |item|
       unless item.name == "Sulfuras, Hand of Ragnaros"
-        if !item_that_increases_in_quality(item)
-          decrease_quality_by_1(item) if item.quality > 0
-        else
+        if item_that_increases_in_quality(item)
           increase_quality_by_1_not_beyond_limit(item)
           increase_backstage_pass_quality(item)
+        else
+          decrease_quality_by_1(item) if item.quality > 0
         end
         decrease_sell_in(item)
         past_sell_in(item)
