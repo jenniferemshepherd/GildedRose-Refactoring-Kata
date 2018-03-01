@@ -17,14 +17,7 @@ class GildedRose
           end
         end
         decrease_sell_in(item)
-        if item.sell_in < 0
-          if item.name != "Aged Brie"
-            decrease_quality_by_1(item) if item.quality > 0
-            item.quality = 0 if item.name == "Backstage passes to a TAFKAL80ETC concert"
-          else
-            increase_quality_by_1_not_beyond_limit(item)
-          end
-        end
+        past_sell_in(item)
       end
     end
   end
@@ -50,5 +43,16 @@ def increase_backstage_pass_quality(item)
   if item.name == "Backstage passes to a TAFKAL80ETC concert"
       increase_quality_by_1_not_beyond_limit(item) if item.sell_in < 11
       increase_quality_by_1_not_beyond_limit(item) if item.sell_in < 6
+  end
+end
+
+def past_sell_in(item)
+  if item.sell_in < 0
+    if item.name == "Aged Brie"
+      increase_quality_by_1_not_beyond_limit(item)
+    else
+      decrease_quality_by_1(item) if item.quality > 0
+      item.quality = 0 if item.name == "Backstage passes to a TAFKAL80ETC concert"
+    end
   end
 end
