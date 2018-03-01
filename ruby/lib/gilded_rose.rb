@@ -16,7 +16,7 @@ class GildedRose
             increase_backstage_pass_quality(item)
           end
         end
-        item.sell_in -= 1
+        decrease_sell_in(item)
         if item.sell_in < 0
           if item.name != "Aged Brie"
             decrease_quality_by_1(item) if item.quality > 0
@@ -28,6 +28,10 @@ class GildedRose
       end
     end
   end
+end
+
+def decrease_sell_in(item)
+  item.sell_in -= 1
 end
 
 def increment_quality_by_1(item)
