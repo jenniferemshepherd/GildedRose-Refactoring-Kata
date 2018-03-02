@@ -3,10 +3,17 @@ require_relative 'item'
 class GildedRose
 
   QUALITYLIMIT = 50
-  QUALITY_ALTER = 1
+  # QUALITY_ALTER = 1
 
   def initialize(items)
     @items = items
+  end
+
+  def update_items()
+    @items.each do |item|
+      item.update_quality
+      item.update_sell_in
+    end
   end
 
   def update_quality()
