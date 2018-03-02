@@ -7,6 +7,11 @@ class AgedBrie
     @quality = quality
   end
 
+  def update_item
+    update_sell_in
+    update_quality
+  end
+
   def update_quality
     @quality += 1 if @sell_in >= 0
     @quality += 2 if @sell_in < 0
