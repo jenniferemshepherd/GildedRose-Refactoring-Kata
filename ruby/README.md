@@ -7,3 +7,5 @@ My approach:
 3. refactoring methods to ensure they are readable and avoid 'if false' methods
 4. start to apply Single Responsibility Principle with AgedBrie
 5. Extract Sulfuras
+6. Reintroduce code in GildedRose that will update the quality of Sulfuras and AgedBrie
+7. Extract BackstagePass
