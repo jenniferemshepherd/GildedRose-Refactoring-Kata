@@ -9,7 +9,7 @@ class GildedRose
     @items = items
   end
 
-  def update_items()
+  def update
     @items.each do |item|
       item.update
     end
