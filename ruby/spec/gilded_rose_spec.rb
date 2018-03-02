@@ -26,20 +26,20 @@ describe GildedRose do
 
     context 'Brie' do
       it "increases in quality" do
-        items = [Item.new("Aged Brie", 2, 0)]
-        GildedRose.new(items).update_quality()
+        items = [AgedBrie.new(2,0)]
+        GildedRose.new(items).update_items()
         expect(items[0].quality).to eq 1
       end
 
       it "decreases sell_in" do
-        items = [Item.new("Aged Brie", 2, 0)]
-        GildedRose.new(items).update_quality()
+        items = [AgedBrie.new(2,0)]
+        GildedRose.new(items).update_items()
         expect(items[0].sell_in).to eq 1
       end
 
       it "increases in quality twice as fast when sell_in < 0" do
-        items = [Item.new("Aged Brie", -1, 0)]
-        GildedRose.new(items).update_quality()
+        items = [AgedBrie.new(-1, 0)]
+        GildedRose.new(items).update_items()
         expect(items[0].quality).to eq 2
       end
     end
