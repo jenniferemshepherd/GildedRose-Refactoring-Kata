@@ -8,4 +8,4 @@ My approach:
 4. start to apply Single Responsibility Principle with AgedBrie
 5. Extract Sulfuras
 6. Reintroduce code in GildedRose that will update the quality of Sulfuras and AgedBrie
-7. Extract BackstagePass
+7. Extract BackstagePass to its own class
