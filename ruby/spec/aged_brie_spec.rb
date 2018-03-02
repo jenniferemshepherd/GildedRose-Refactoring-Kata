@@ -1,6 +1,6 @@
 require 'aged_brie'
 
-describe 'AgedBrie' do
+describe AgedBrie do
   it "increases in quality" do
     item = AgedBrie.new(2,0)
     item.update

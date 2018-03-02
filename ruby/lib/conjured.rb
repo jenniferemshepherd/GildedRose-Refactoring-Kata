@@ -1,5 +1,4 @@
 class Conjured
-
   attr_reader :sell_in, :quality
 
   def initialize(sell_in, quality)
@@ -19,5 +18,4 @@ class Conjured
   def update_sell_in
     @sell_in -= 1
   end
-
 end

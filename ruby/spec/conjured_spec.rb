@@ -1,6 +1,6 @@
 require 'conjured'
 
-describe 'conjured' do
+describe Conjured do
   it "decreases in quality twice as fast" do
     item = Conjured.new(3, 6)
     item.update

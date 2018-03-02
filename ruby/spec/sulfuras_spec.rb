@@ -1,6 +1,6 @@
 require 'sulfuras'
 
-describe 'Sulfuras' do
+describe Sulfuras do
   it "does not decrease in quality" do
     item = Sulfuras.new(0, 80)
     item.update
