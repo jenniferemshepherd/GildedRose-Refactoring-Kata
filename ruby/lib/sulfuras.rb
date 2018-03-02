@@ -7,7 +7,7 @@ class Sulfuras
     @quality = quality
   end
 
-  def update_item
+  def update
     update_sell_in
     update_quality
   end

@@ -11,7 +11,7 @@ class GildedRose
 
   def update_items()
     @items.each do |item|
-      item.update_item
+      item.update
     end
   end
 
