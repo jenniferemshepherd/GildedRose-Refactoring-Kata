@@ -1,16 +1,15 @@
 require 'sulfuras'
 
 describe 'Sulfuras' do
-  it "quality does not change" do
-    item = Sulfuras.new(0,80)
-    item.update_quality()
-    expect(item.quality).to eq 80
+  it "does not decrease in quality" do
+    items = [Item.new("Sulfuras, Hand of Ragnaros", 0, 80)]
+    GildedRose.new(items).update_quality()
+    expect(items[0].quality).to eq 80
   end
 
-  it "sell_in does not change" do
-    item = Sulfuras.new(-1,80)
-    item.update_sell_in()
-    expect(item.sell_in).to eq -1
+  it "does not need to be sold" do
+    items = [Item.new("Sulfuras, Hand of Ragnaros", 0, 80)]
+    GildedRose.new(items).update_quality()
+    expect(items[0].sell_in).to eq 0
   end
-
 end
