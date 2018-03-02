@@ -1,5 +1,10 @@
 require 'gilded_rose'
 require 'item'
+require 'aged_brie'
+require 'backstage_pass'
+require 'dexterity_vest'
+require 'elixir'
+require 'sulfuras'
 
 describe GildedRose do
 
@@ -10,38 +15,14 @@ describe GildedRose do
       expect(items[0].name).to eq "foo"
     end
 
-    context 'Sulfuras' do
-      it "does not decrease in quality" do
-        items = [Sulfuras.new(0, 80)]
-        GildedRose.new(items).update_items()
-        expect(items[0].quality).to eq 80
-      end
-
-      it "does not need to be sold" do
-        items = [Sulfuras.new(0, 80)]
-        GildedRose.new(items).update_items()
-        expect(items[0].sell_in).to eq 0
-      end
-    end
-
-    context 'Brie' do
-      it "increases in quality" do
-        items = [AgedBrie.new(2,0)]
-        GildedRose.new(items).update_items()
-        expect(items[0].quality).to eq 1
-      end
-
-      it "decreases sell_in" do
-        items = [AgedBrie.new(2,0)]
-        GildedRose.new(items).update_items()
-        expect(items[0].sell_in).to eq 1
-      end
-
-      it "increases in quality twice as fast when sell_in < 0" do
-        items = [AgedBrie.new(-1, 0)]
-        GildedRose.new(items).update_items()
-        expect(items[0].quality).to eq 2
-      end
+    it "behaves as predicted" do
+      items = [Sulfuras.new(0, 80), AgedBrie.new(2,0), AgedBrie.new(-1, 0)]
+      GildedRose.new(items).update
+      expect(items[0].quality).to eq 80
+      expect(items[0].sell_in).to eq 0
+      expect(items[1].quality).to eq 1
+      expect(items[1].sell_in).to eq 1
+      expect(items[2].quality).to eq 2
     end
 
     # context 'Conjured Mana Cake' do
