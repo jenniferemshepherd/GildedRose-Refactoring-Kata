@@ -2,6 +2,7 @@ require 'gilded_rose'
 require 'item'
 require 'aged_brie'
 require 'backstage_pass'
+require 'conjured'
 require 'dexterity_vest'
 require 'elixir'
 require 'sulfuras'
@@ -27,7 +28,9 @@ describe GildedRose do
               DexterityVest.new(10, 20),
               DexterityVest.new(-1, 20),
               Elixir.new(4, 6),
-              Elixir.new(-1, 6)]
+              Elixir.new(-1, 6),
+              Conjured.new(3, 6),
+              Conjured.new(2, 0)]
       GildedRose.new(items).update
       expect(items[0].quality).to eq 80
       expect(items[0].sell_in).to eq 0
@@ -45,22 +48,8 @@ describe GildedRose do
       expect(items[9].quality).to eq 18
       expect(items[10].quality).to eq 5
       expect(items[10].sell_in).to eq 3
+      expect(items[11].quality).to eq 4
+      expect(items[12].sell_in).to eq 2
     end
-
-
-
-        # context 'Conjured Mana Cake' do
-        #   it "decreases in quality twice as fast" do
-        #     items = [Item.new("Conjured Mana Cake", 3, 6)]
-        #     GildedRose.new(items).update_quality()
-        #     expect(items[0].quality).to eq 4
-        #   end
-        #
-        #   it "decreases sell_in" do
-        #     items = [Item.new("Conjured Mana Cake", 2, 0)]
-        #     GildedRose.new(items).update_quality()
-        #     expect(items[0].sell_in).to eq 2
-        #   end
-        # end
   end
 end
