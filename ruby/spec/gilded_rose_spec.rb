@@ -16,105 +16,51 @@ describe GildedRose do
     end
 
     it "behaves as predicted" do
-      items = [Sulfuras.new(0, 80), AgedBrie.new(2,0), AgedBrie.new(-1, 0)]
+      items = [Sulfuras.new(0, 80),
+              AgedBrie.new(2,0),
+              AgedBrie.new(-1, 0),
+              BackstagePass.new(2, 49),
+              BackstagePass.new(15, 20),
+              BackstagePass.new(10, 45),
+              BackstagePass.new(5, 45),
+              BackstagePass.new(0, 49),
+              DexterityVest.new(10, 20),
+              DexterityVest.new(-1, 20),
+              Elixir.new(4, 6),
+              Elixir.new(-1, 6)]
       GildedRose.new(items).update
       expect(items[0].quality).to eq 80
       expect(items[0].sell_in).to eq 0
       expect(items[1].quality).to eq 1
       expect(items[1].sell_in).to eq 1
       expect(items[2].quality).to eq 2
+      expect(items[3].quality).to eq 50
+      expect(items[3].sell_in).to eq 1
+      expect(items[4].quality).to eq 21
+      expect(items[5].quality).to eq 47
+      expect(items[6].quality).to eq 48
+      expect(items[7].quality).to eq 0
+      expect(items[8].quality).to eq 19
+      expect(items[8].sell_in).to eq 9
+      expect(items[9].quality).to eq 18
+      expect(items[10].quality).to eq 5
+      expect(items[10].sell_in).to eq 3
     end
 
-    # context 'Conjured Mana Cake' do
-    #   it "decreases in quality twice as fast" do
-    #     items = [Item.new("Conjured Mana Cake", 3, 6)]
-    #     GildedRose.new(items).update_quality()
-    #     expect(items[0].quality).to eq 4
-    #   end
-    #
-    #   it "decreases sell_in" do
-    #     items = [Item.new("Conjured Mana Cake", 2, 0)]
-    #     GildedRose.new(items).update_quality()
-    #     expect(items[0].sell_in).to eq 2
-    #   end
-    # end
 
-    context 'Backstage passes to a TAFKAL80ETC concert' do
-      it "cannot increase quality beyond 50" do
-        items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 2, 49)]
-        GildedRose.new(items).update_quality()
-        expect(items[0].quality).to eq 50
-      end
 
-      it "increases quality by 1 with >10 days to go" do
-        items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 15, 20)]
-        GildedRose.new(items).update_quality()
-        expect(items[0].quality).to eq 21
-      end
-
-      it "increases quality by 2 with 5<days<=10 to go" do
-        items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 45)]
-        GildedRose.new(items).update_quality()
-        expect(items[0].quality).to eq 47
-      end
-
-      it "increases quality by 3 with 0<=days<=5 to go" do
-        items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 5, 45)]
-        GildedRose.new(items).update_quality()
-        expect(items[0].quality).to eq 48
-      end
-
-      it "has 0 quality when sell_in date is passed" do
-        items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 49)]
-        GildedRose.new(items).update_quality()
-        expect(items[0].quality).to eq 0
-      end
-
-      it "decreases sell_in" do
-        items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 5, 49)]
-        GildedRose.new(items).update_quality()
-        expect(items[0].sell_in).to eq 4
-      end
-    end
-
-    context '+5 Dexterity Vest' do
-      it "decreases in quality" do
-        items = [Item.new("+5 Dexterity Vest", 10, 20)]
-        GildedRose.new(items).update_quality()
-        expect(items[0].quality).to eq 19
-      end
-
-      it "decreases in quality twice as fast when sell_in<0" do
-        items = [Item.new("+5 Dexterity Vest", -1, 20)]
-        GildedRose.new(items).update_quality()
-        expect(items[0].quality).to eq 18
-      end
-
-      it "decreases sell_in" do
-        items = [Item.new("+5 Dexterity Vest", 10, 20)]
-        GildedRose.new(items).update_quality()
-        expect(items[0].sell_in).to eq 9
-      end
-    end
-
-    context 'Elixir of the Mongoose, 4, 6' do
-      it "decreases in quality" do
-        items = [Item.new("Elixir of the Mongoose", 4, 6)]
-        GildedRose.new(items).update_quality()
-        expect(items[0].quality).to eq 5
-      end
-
-      it "decreases sell_in" do
-        items = [Item.new("Elixir of the Mongoose", 4, 6)]
-        GildedRose.new(items).update_quality()
-        expect(items[0].sell_in).to eq 3
-      end
-
-      it "decreases in quality twice as fast when sell_in<0" do
-        items = [Item.new("Elixir of the Mongoose", -1, 6)]
-        GildedRose.new(items).update_quality()
-        expect(items[0].quality).to eq 4
-      end
-    end
+        # context 'Conjured Mana Cake' do
+        #   it "decreases in quality twice as fast" do
+        #     items = [Item.new("Conjured Mana Cake", 3, 6)]
+        #     GildedRose.new(items).update_quality()
+        #     expect(items[0].quality).to eq 4
+        #   end
+        #
+        #   it "decreases sell_in" do
+        #     items = [Item.new("Conjured Mana Cake", 2, 0)]
+        #     GildedRose.new(items).update_quality()
+        #     expect(items[0].sell_in).to eq 2
+        #   end
+        # end
   end
 end
